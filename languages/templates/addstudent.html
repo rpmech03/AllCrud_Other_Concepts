@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <script src='main.js'></script>
+</head>
+<body>
+    <form action="" method="post">
+        {% csrf_token %}
+        NAME<input type="text" name="sname" /><br>
+        BRANCH<input type="text" name="branch" /><br>
+        YEAR<input type="text" name="year" /><br>
+        TRAINER<select name="trainer">
+            {% for i in tr %}
+                <option value="{{i.id}}">{{i.name}}</option>
+            {% endfor %}
+        </select><br>
+        <input type="submit" value="Add Student" />
+    </form>
+</body>
+</html>                                                                                                                                     

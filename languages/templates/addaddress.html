@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html>
+<head>
+    
+</head>
+<body>
+    <form action="" method="post">
+        {% csrf_token %}
+        CEOS<select name="ceo">
+                    {% for i in data %}
+                        <option value="{{i.id}}">{{i.name}}</option>
+                    {% endfor %}
+            </select><br>
+        STREET<input type="text" name="street" /><br>
+        CITY<input type="text" name="city" /><br>
+        STATE<input type="text" name="state" /><br>
+        <input type="submit" value="Add Data" />
+    </form>
+</body>
+</html>

@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <script src='main.js'></script>
+</head>
+<body>
+    <table align="center" border="1px">
+        <h1 align="center">STUDENTS OF THE ORGANISATION</h1>
+        <tr>
+            <th>ROLL</th>
+            <th>NAME</th>
+            <th>DOB</th>
+            <th>GENDER</th>
+            <th>FEES</th>
+            <th>ABOUT</th>
+            <th>IMAGE</th>
+        </tr>
+        {% for i in data %}
+            <tr>
+                <form action="stud" method="post">
+                {% csrf_token %}
+                <td>
+                    <input type="hidden" name="id" value="{{i.id}}" />
+                    <input type="text" name="lname" value="{{i.roll}}" />
+                </td>
+                <td><input type="number" name="fees" value="{{i.name}}" /></td>
+                <td><input type="text" name="duration" value="{{i.dob}}" /></td>
+                <td><input type="text" name="trainer" value="{{i.gen}}" /></td>
+                <td><input type="text" name="trainer" value="{{i.fees}}" /></td>
+                <td><input type="text" name="trainer" value="{{i.about}}" /></td>
+                <td><input type="text" name="trainer" value="{{i.img}}" /></td>
+                <td><input type="submit" value="stud" /></td>
+                </form>
+            </form>
+            </tr>
+        {% endfor %}
+    </table>
+</body>
+</html>

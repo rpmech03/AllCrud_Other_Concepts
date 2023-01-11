@@ -1,0 +1,57 @@
+<h1 align="center">VENDOR DETAILS</h1>
+<hr>
+<table align="center" border="1px">
+    <tr>
+        <th>VNAME</th>
+        <th>VADDRESS</th>
+    </tr>
+    {% for i in ven %}
+        <tr>
+            <td>{{i.vname}}</td>
+            <td>{{i.vaddress}}</td>
+        </tr>
+    {% endfor %}
+</table>
+<hr>
+
+<h1 align="center">CUSTOMER DETAILS</h1>
+<hr>
+<table align="center" border="1px">
+    <tr>
+        <th>Customer_ID</th>
+        <th>CNAME</th>
+        <th>CADDRESS</th>
+        <th>VENDOR DETAILS</th>
+        <th>UPDATE</th>
+        <th>DELETE</th>
+    </tr>
+    {% for i in cust %}
+        <tr>
+            <form action="updatecust" method="post">
+                {% csrf_token %}
+                <td align="center">
+                    {{i.id}}<input type="hidden" name="id" value="{{i.id}}" />
+                </td>
+                <td>
+                    <input type="text" name="cname" value="{{i.cname}}" />
+                </td>
+                <td>
+                    <input type="text" name="caddress" value="{{i.caddress}}" />
+                </td>
+                <td>
+                    <select name="vendors" multiple>
+                        {% for v in ven %}
+                           {% if v in  i.vendors.all %}
+                              <option value="{{v.id}}" selected >{{v.vname}}</option>
+                           {% else %}
+                              <option value="{{v.id}}" >{{v.vname}}</option>
+                           {% endif %}
+                        {% endfor %}
+                    </select>
+                </td>
+                <td><input type="submit" value="Update" /></td>
+            </form>
+            <td><a href="deletecust?id={{i.id}}">Delete</a></td>
+        </tr>
+    {% endfor %}
+</table>

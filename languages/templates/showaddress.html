@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html>
+<head>
+    
+</head>
+<body>
+    <table align="center" border="1px">
+        <tr>
+            <th>CeoID</th>
+            <th>ceo_name</th>
+            <th>ceo_email</th>
+            <th>Address_Id</th>
+            <th>street</th>
+            <th>city</th>
+            <th>state</th>
+        </tr>
+        {% for i in data %}
+    </tr>
+    <form action="updateaddress" method="post">
+        {% csrf_token %}
+            <td>{{i.ceo.id}}<input type="hidden" name="id" value="{{i.ceo.id}}" /></td>
+            <td>{{i.ceo.name}}</td>
+            <td>{{i.ceo.email}}</td>
+            <td>{{i.ceo}}</td>
+            <td><input type="text" name="street" value="{{i.street}}" /></td>
+            <td><input type="text" name="city" value="{{i.city}}" /></td>
+            <td><input type="text" name="state" value="{{i.state}}" /></td>
+            <td><input type="submit" value="Update" /></td>
+        </form>
+            <td><a href="deleteaddress?id={{i.ceo.id}}">Delete Address</a></td>
+</tr>
+        {% endfor %}
+    </table>
+</body>
+</html>

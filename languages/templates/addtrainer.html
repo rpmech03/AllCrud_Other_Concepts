@@ -1,0 +1,15 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <script src='main.js'></script>
+</head>
+<body>
+    <form action="" method="post">
+        {% csrf_token %}
+        NAME<input type="text" name="name" /><br>
+        QUALIFICATION<input type="text" name="qualification" /><br>
+        LANGUAGES<input type="text" name="languages" /><br>
+        <input type="submit" value="Add Trainer" />
+    </form>
+</body>
+</html>

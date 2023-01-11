@@ -1,0 +1,16 @@
+<!DOCTYPE html>
+<html>
+<head>
+   
+</head>
+<body>
+   <form action="" method="post">
+       {% csrf_token %}
+        <input type="number" name="id" placeholder="Enter ID to delete the language"/>
+        <input type="submit" value="Delete" />
+   </form> 
+   {% for message in messages %}
+   {{message}}
+   {% endfor %}
+</body>
+</html>

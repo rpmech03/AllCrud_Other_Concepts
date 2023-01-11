@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html>
+<head>
+</head>
+<body>
+    <table align="center" border="1px">
+        {% for i in data %}
+            <tr>
+                <td>{{i.username}}</td>
+                <td>{{i.first_name}}</td>
+                <td>{{i.last_name}}</td>
+                <td>{{i.email}}</td>
+                <td>{{i.mob}}</td>
+                <td>{{i.address}}</td>
+            </tr>
+        {% endfor %}
+    </table>
+</body>
+</html>

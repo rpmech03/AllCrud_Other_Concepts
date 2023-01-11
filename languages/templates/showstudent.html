@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <script src='main.js'></script>
+</head>
+<body>
+    <table align="center" border="1px">
+        <h1 align="center">TRAINER DETAILS</h1>
+        <tr>
+            <th>Trainer_ID</th>
+            <th>Tname</th>
+            <th>Qualification</th>
+            <th>Languages</th>
+        </tr>
+        {% for i in tr %}
+            <tr>
+                <td>{{i.id}}</td>
+                <td>{{i.name}}</td>
+                <td>{{i.qualification}}</td>
+                <td>{{i.languages}}</td>
+           
+            </tr>
+        {% endfor %}
+    </table>
+<hr><br>
+
+<h1 align="center">STUDENT DETAILS</h1>
+    <table align="center" border="1px">
+        <tr>
+            <th>Student_ID</th>
+            <th>Sname</th>
+            <th>Branch</th>
+            <th>Year</th>
+        </tr>
+        {% for i in st %}
+        <tr>
+            <form action="updatestudent" method="post">
+                {% csrf_token %}
+            <td>{{i.id}}<input type="hidden" name="id" value="{{i.id}}" /></td>
+            <td><input type="text" name="sname" value="{{i.sname}}" /></td>
+            <td><input type="text" name="branch" value="{{i.branch}}" /></td>
+            <td><input type="text" name="year" value="{{i.year}}" /></td>
+            <td>
+                <select name="trainer">
+                    <option value="{{i.trainer.id}}">{{i.trainer.name}}</option>  
+                    {% for j in tr %}
+                    <option value="{{j.id}}">{{j.name}}</option>
+                    {% endfor %} 
+                </select>
+            </td>
+            <td><input type="submit" value="Update" /></td>
+        </form>
+            <td><a href="deletestudent?id={{i.id}}">Delete</a></td>
+        </tr>
+        {% endfor %}
+    </table>
+</body>
+</html>

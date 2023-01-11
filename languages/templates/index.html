@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <title></title>
+    </head>
+    <body>
+        <form action="search" method="post" >
+            {% csrf_token %}
+            <input type="text" name="lname" placeholder="Search By Name"/>
+            <input type="submit" value="search" />
+        </form><br>
+        <hr>
+
+        {% if user.is_authenticated %}
+        {{user.first_name}} {{user.last_name}} <br><br>
+        
+        <a href="addlanguage">Add Language</a><br>
+        <a href="deletelanguage">delete</a><br>
+        <a href="logout">Logout</a><br>
+        {% else %}
+        <a href="addemp">add emp</a><br>
+        <a href="showemp">show emp</a><br>
+        <a href="signup">signup</a><br>
+        <a href="login">Login</a><br>
+        {% endif %}<br>
+        <hr>
+
+        <a href="addaddress">add Address</a><br>
+        <a href="showaddress">add Address</a><br>
+        <a href="addcust">add Customer</a><br>
+        <a href="showcust">show Customer</a><br>
+        <hr>
+        <a href="showstudent">showstudent</a><br>
+        <a href="addtrainer">add trainer</a><br>
+        <a href="addstudent">add student</a><br>
+        <a href="stud">stud</a><br>
+
+    
+        <hr>
+        <table align="center" border="1px">
+            <h1 align="center">LANGUAGES PROVIDED BY ORGANISATION</h1>
+            <tr>
+                <th>NAME</th>
+                <th>FEES</th>
+                <th>DURATION</th>
+                <th>TRAINER</th>
+            </tr>
+            {% for i in data %}
+                <tr>
+                    <form action="updatelang" method="post">
+                    {% csrf_token %}
+                    <td>
+                        <input type="hidden" name="id" value="{{i.id}}" />
+                        <input type="text" name="lname" value="{{i.lname}}" />
+                    </td>
+                    <td><input type="number" name="fees" value="{{i.fees}}" /></td>
+                    <td><input type="text" name="duration" value="{{i.duration}}" /></td>
+                    <td><input type="text" name="trainer" value="{{i.trainer}}" /></td>
+                    <td><input type="submit" value="Update" /></td>
+                    </form>
+                </form>
+                    <td><a href="deldata?lname={{i.lname}}">delete</a></td>
+                </tr>
+            {% endfor %}
+        </table>
+
+
+        {% if messages %} 
+        {% for message in messages %} 
+        {% if message.tags %}
+        <script>
+            alert("{{ message }}")
+        </script>
+         {% endif %} 
+         {% endfor %} 
+         {% endif %}
+  
+
+    </body>
+</html>

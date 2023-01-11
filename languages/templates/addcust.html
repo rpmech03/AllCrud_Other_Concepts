@@ -1,0 +1,11 @@
+<form action="" method="post">
+    {% csrf_token %}
+    CNAME<input type="text" name="cname" /><br>
+    CADDRESS<input type="text" name="caddress" /><br>
+    VENDORS<select name="vendor" multiple>
+        {% for i in ven %}
+            <option value="{{i.id}}">{{i.vname}}</option>
+        {% endfor %}
+    </select><br/>
+    <input type="submit" value="Add Customer" />
+</form>

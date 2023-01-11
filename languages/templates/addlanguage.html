@@ -1,0 +1,16 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <title></title>
+    </head>
+    <body>
+        <form action="" method="post">
+            {% csrf_token %}
+            lname<input type="text" name="lname" /><br>
+            fees<input type="number" name="fees" /><br>
+            duration<input type="text" name="duration" /><br>
+            trainer<input type="text" name="trainer" /><br>
+            <input type="submit" value="Add Language" />
+        </form>
+    </body>
+</html>
